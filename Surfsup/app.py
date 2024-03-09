@@ -147,8 +147,6 @@ def start_end(start,end):
     results = session.query(func.min(Measurement.tobs),func.avg(Measurement.tobs),func.max(Measurement.tobs)).\
         filter(Measurement.date >= start).filter(Measurement.date <= end).all()
     
-    
- 
 
     session.close()
 
@@ -159,7 +157,7 @@ def start_end(start,end):
         start_end_dict["min_temp"] = min
         start_end_dict["avg_temp"] = avg
         start_end_dict["max_temp"] = max
-        start_end_tobs.append(start_end_tobs)
+        start_end_tobs.append(start_end_dict)
 
 
     return jsonify(start_end_tobs)
